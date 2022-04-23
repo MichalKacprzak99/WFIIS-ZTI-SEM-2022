@@ -1,5 +1,12 @@
 export function configureFakeBackend() {
-    let users = [{ id: 1, username: 'test', password: 'test', firstName: 'Test', lastName: 'User' }];
+    const users = [
+        {firstName: "Testf 1", lastName: "TestL 1", email: 'test1@gmail.com', password:'test1'},
+        {firstName: "Testf 2", lastName: "TestL 2", email: 'test2@gmail.com', password:'test2'},
+        {firstName: "Testf 3", lastName: "TestL 3", email: 'test3@gmail.com', password:'test3'},
+        {firstName: "Testf 4", lastName: "TestL 4", email: 'test4@gmail.com', password:'test4'},
+        {firstName: "Testf 4", lastName: "TestL 4", email: 'test5@gmail.com', password:'test5'},
+        {firstName: "Testf 4", lastName: "TestL 4", email: 'test6@gmail.com', password:'test6'},
+    ]
     let realFetch = window.fetch;
     window.fetch = function (url, opts) {
         return new Promise((resolve, reject) => {
@@ -10,10 +17,9 @@ export function configureFakeBackend() {
                 if (url.endsWith('/users/authenticate') && opts.method === 'POST') {
                     // get parameters from post request
                     let params = JSON.parse(opts.body);
-
                     // find if any user matches login credentials
                     let filteredUsers = users.filter(user => {
-                        return user.username === params.username && user.password === params.password;
+                        return user.email === params.email && user.password === params.password;
                     });
 
                     if (filteredUsers.length) {
@@ -26,10 +32,10 @@ export function configureFakeBackend() {
                             lastName: user.lastName,
                             token: 'fake-jwt-token'
                         };
-                        resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(responseJson)) });
+                        resolve({ok: true, text: () => Promise.resolve(JSON.stringify(responseJson))});
                     } else {
                         // else return error
-                        reject('Username or password is incorrect');
+                        reject('Email or password is incorrect');
                     }
 
                     return;
@@ -39,7 +45,7 @@ export function configureFakeBackend() {
                 if (url.endsWith('/users') && opts.method === 'GET') {
                     // check for fake auth token in header and return users if valid, this security is implemented server side in a real application
                     if (opts.headers && opts.headers.Authorization === 'Bearer fake-jwt-token') {
-                        resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(users)) });
+                        resolve({ok: true, text: () => Promise.resolve(JSON.stringify(users))});
                     } else {
                         // return 401 not authorised if token is null or invalid
                         reject('Unauthorised');
@@ -54,7 +60,7 @@ export function configureFakeBackend() {
                     if (opts.headers && opts.headers.Authorization === 'Bearer fake-jwt-token') {
 
                         let params = JSON.parse(opts.body);
-                        const userMaxId = users.reduce(function(prev, current) {
+                        const userMaxId = users.reduce(function (prev, current) {
                             return (prev.id > current.id) ? prev : current
                         })
                         params['id'] = userMaxId.id + 1
@@ -66,7 +72,7 @@ export function configureFakeBackend() {
                             firstName: params.firstName,
                             lastName: params.lastName,
                         };
-                        resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(responseJson)) });
+                        resolve({ok: true, text: () => Promise.resolve(JSON.stringify(responseJson))});
                     } else {
                         // return 401 not authorised if token is null or invalid
                         reject('Unauthorised');

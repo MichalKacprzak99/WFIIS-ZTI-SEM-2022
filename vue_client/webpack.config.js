@@ -17,7 +17,11 @@ module.exports = {
                 test: /\.js?$/,
                 exclude: /(node_modules)/,
                 use: 'babel-loader'
-            }
+            },
+            {
+                test: /\.css$/i,
+                use: ["css-loader"],
+            },
         ]
     },
     plugins: [new HtmlWebpackPlugin({

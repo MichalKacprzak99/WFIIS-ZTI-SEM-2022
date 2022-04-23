@@ -1,31 +1,23 @@
+<style scoped>
+.home {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  width: 100%;
+}
+
+</style>
 <template>
-  <div>
-    <h1>Hi {{ user.firstName }}!</h1>
-    <p>You're logged in with Vue + Vuex & JWT!!</p>
-    <p>
-      <router-link to="/login">Logout</router-link>
-    </p>
-    <p>
-      <router-link to="/users">Users</router-link>
-    </p>
-    <p>
-      <router-link to="/new-user">Add new user</router-link>
-    </p>
-  </div>
+    <div class="home"> Zaawansowane technologie internetowe 2022<br/>
+      Michał Kacprzak & Dariusz Biela<br/>
+    </div>
 </template>
 
 <script>
 export default {
-  computed: {
-    user() {
-      return this.$store.state.authentication.user;
-    },
-    users() {
-      return this.$store.state.users.all;
-    }
-  },
-  created() {
-    this.$store.dispatch('users/getAll');
-  }
+  name: "HomePage"
 };
 </script>
