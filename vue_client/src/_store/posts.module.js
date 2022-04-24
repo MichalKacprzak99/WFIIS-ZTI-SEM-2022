@@ -1,6 +1,6 @@
-import { userService } from '../_services';
+import { postService } from '../_services';
 
-export const users = {
+export const posts = {
     namespaced: true,
     state: {
         all: {
@@ -10,18 +10,18 @@ export const users = {
         getAll({ commit }) {
             commit('getAllRequest');
 
-            userService.getAll()
+            postService.getAll()
                 .then(
-                    users => commit('getAllSuccess', users),
+                    posts => commit('getAllSuccess', posts),
                     error => commit('getAllFailure', error)
                 );
         },
-        add({ commit }, {firstName, lastName, password, email}) {
+        add({ commit }, {content}) {
             commit('getAllRequest');
 
-            userService.add(firstName, lastName, password, email)
+            postService.add(content)
                 .then(
-                    user => commit('addNewSuccess', user),
+                    post => commit('addNewSuccess', post),
                     error => commit('getAllFailure', error)
                 );
         }
@@ -30,17 +30,17 @@ export const users = {
         getAllRequest(state) {
             state.all = { loading: true };
         },
-        getAllSuccess(state, users) {
-            state.all = { items: users };
+        getAllSuccess(state, posts) {
+            state.all = { items: posts };
         },
         getAllFailure(state, error) {
             state.all = { error };
         },
-        addNewSuccess(state, user) {
+        addNewSuccess(state, post) {
             if (state.all.hasOwnProperty("items")){
-                state.all.items.push(user);
+                state.all.items.push(post);
             } else {
-                state.all = { items: [user] };
+                state.all = { items: [post] };
             }
         }
     }

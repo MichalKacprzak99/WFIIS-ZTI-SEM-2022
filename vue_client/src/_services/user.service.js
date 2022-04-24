@@ -1,26 +1,21 @@
 import config from 'config';
-import {authHeader} from '../_helpers';
-import {router} from '../_helpers';
 
 export const userService = {
     login,
     logout,
-    getAll,
-    add
 };
 
-function login(email, password) {
+function login(username, password) {
     const requestOptions = {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({email, password})
+        body: JSON.stringify({username, password})
     };
-
-    return fetch(`${config.apiUrl}/users/authenticate`, requestOptions)
+    return fetch(`${config.apiUrl}/auth/signin/`, requestOptions)
         .then(handleResponse)
         .then(user => {
             // login successful if there's a jwt token in the response
-            if (user.token) {
+            if (user.accessToken) {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));
             }
@@ -32,28 +27,6 @@ function login(email, password) {
 function logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('user');
-}
-
-function getAll() {
-    const requestOptions = {
-        method: 'GET',
-        headers: authHeader()
-    };
-
-    return fetch(`${config.apiUrl}/users`, requestOptions).then(handleResponse);
-}
-
-function add(firstName, lastName, password, email) {
-    const requestOptions = {
-        method: 'POST',
-        headers: {...{'Content-Type': 'application/json'}, ...authHeader()},
-        body: JSON.stringify({firstName, lastName, password, email})
-    };
-    return fetch(`${config.apiUrl}/users/add`, requestOptions).then(handleResponse).then(user => {
-            router.push('/users')
-            return user
-        }
-    )
 }
 
 function handleResponse(response) {

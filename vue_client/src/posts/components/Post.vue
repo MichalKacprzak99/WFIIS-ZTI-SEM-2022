@@ -37,16 +37,16 @@ button:hover, a:hover {
 
 <template>
   <div class="card">
-    <h1>{{firstName}} {{lastName}}</h1>
-    <p class="title">{{email}}</p>
+    <h4>User: {{post.user.username}}</h4>
+    <p class="title">Content: {{post.content}}</p>
 
   </div>
 </template>
 
 <script>
 export default {
-  name: "UserCard",
-  props: ['firstName', 'lastName', 'email']
+  name: "PostCard",
+  props: ['post']
 }
 </script>
 

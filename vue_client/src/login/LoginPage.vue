@@ -13,10 +13,10 @@
     <h2>Login</h2>
     <form @submit.prevent="handleSubmit">
       <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" v-model="email" name="email" class="form-control"
-               :class="{ 'is-invalid': submitted && !email }"/>
-        <div v-show="submitted && !email" class="invalid-feedback">Username is required</div>
+        <label for="username">Username</label>
+        <input type="text" v-model="username" name="username" class="form-control"
+               :class="{ 'is-invalid': submitted && !username }"/>
+        <div v-show="submitted && !username" class="invalid-feedback">Username is required</div>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
@@ -37,7 +37,7 @@
 export default {
   data() {
     return {
-      email: '',
+      username: '',
       password: '',
       submitted: false
     }
@@ -54,10 +54,10 @@ export default {
   methods: {
     handleSubmit(e) {
       this.submitted = true;
-      const {email, password} = this;
+      const {username, password} = this;
       const {dispatch} = this.$store;
-      if (email && password) {
-        dispatch('authentication/login', {email, password});
+      if (username && password) {
+        dispatch('authentication/login', {username, password});
       }
     }
   }

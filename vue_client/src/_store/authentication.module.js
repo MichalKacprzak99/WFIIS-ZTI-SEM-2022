@@ -10,10 +10,9 @@ export const authentication = {
     namespaced: true,
     state: initialState,
     actions: {
-        login({ dispatch, commit }, { email, password }) {
-            commit('loginRequest', { email });
-
-            userService.login(email, password)
+        login({ dispatch, commit }, { username, password }) {
+            commit('loginRequest', { username, password });
+            userService.login(username, password)
                 .then(
                     user => {
                         commit('loginSuccess', user);

@@ -49,10 +49,10 @@ ul li {
         <router-link to="/login">Login</router-link>
       </li>
       <li>
-        <router-link to="/users">Users</router-link>
+        <router-link to="/posts">Posts</router-link>
       </li>
       <li>
-        <router-link to="/new-user">Add new user</router-link>
+        <router-link to="/add-post">Add new post</router-link>
       </li>
     </ul>
   </nav>

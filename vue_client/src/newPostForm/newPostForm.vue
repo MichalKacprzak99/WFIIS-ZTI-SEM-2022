@@ -10,33 +10,14 @@
 </style>
 <template>
   <div class="form">
-    <h2>Add New User</h2>
+    <h2>Add New Post</h2>
     <form @submit.prevent="handleAddSubmit">
       <div class="form-group">
-        <label for="firstName">First Name</label>
-        <input type="text" v-model="firstName" name="firstName" class="form-control"
-               :class="{ 'is-invalid': submitted && !firstName }"/>
-        <div v-show="submitted && !firstName" class="invalid-feedback">First Name is required</div>
+        <label for="content">Content</label>
+        <input type="text" v-model="content" name="content" class="form-control"
+               :class="{ 'is-invalid': submitted && !content }"/>
+        <div v-show="submitted && !content" class="invalid-feedback">First Name is required</div>
       </div>
-      <div class="form-group">
-        <label for="lastName">Last Name</label>
-        <input type="text" v-model="lastName" name="lastName" class="form-control"
-               :class="{ 'is-invalid': submitted && !lastName }"/>
-        <div v-show="submitted && !lastName" class="invalid-feedback">Last Name is required</div>
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" v-model="email" name="email" class="form-control"
-               :class="{ 'is-invalid': submitted && !email }"/>
-        <div v-show="submitted && !email" class="invalid-feedback">Email is required</div>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" v-model="password" name="password" class="form-control"
-               :class="{ 'is-invalid': submitted && !password }"/>
-        <div v-show="submitted && !password" class="invalid-feedback">Password is required</div>
-      </div>
-
       <div class="form-group">
         <button class="btn btn-primary">Add</button>
         <img v-show="adding"
@@ -50,25 +31,22 @@
 export default {
   data() {
     return {
-      firstName: '',
-      lastName: '',
-      password: '',
-      email: '',
+      content: '',
       submitted: false
     }
   },
   computed: {
     adding () {
-      return this.$store.state.users.all.loading;
+      return this.$store.state.posts.all.loading;
     }
   },
   methods: {
     handleAddSubmit(e) {
       this.submitted = true;
-      const {firstName, lastName, password, email} = this;
+      const {content} = this;
       const {dispatch} = this.$store;
-      if (firstName && lastName && password && email) {
-        dispatch('users/add', {firstName, lastName, password, email});
+      if (content) {
+        dispatch('posts/add', {content});
       }
     }
   }

@@ -3,8 +3,8 @@ import Router from 'vue-router';
 
 import HomePage from '../home/HomePage'
 import LoginPage from '../login/LoginPage'
-import UsersPage from '../users/UsersPage'
-import newUserForm from '../newUserForm/newUserForm'
+import PostsPage from '../posts/PostsPage'
+import newPostForm from '../newPostForm/newPostForm'
 
 Vue.use(Router);
 
@@ -13,8 +13,8 @@ export const router = new Router({
   routes: [
     { path: '/', component: HomePage },
     { path: '/login', component: LoginPage },
-    { path: '/users', component: UsersPage },
-    { path: '/new-user', component: newUserForm },
+    { path: '/posts', component: PostsPage },
+    { path: '/add-post', component: newPostForm },
 
     // otherwise redirect to home
     { path: '*', redirect: '/' }

@@ -10,8 +10,8 @@ import navbar from './components/NavBar'
 Vue.component('myFooter', footer)
 Vue.component('myNavbar', navbar)
 // setup fake backend
-import { configureFakeBackend } from './_helpers';
-configureFakeBackend();
+// import { configureFakeBackend } from './_helpers';
+// configureFakeBackend();
 Vue.config.productionTip = false
 
 import "./assets/css/index.css"

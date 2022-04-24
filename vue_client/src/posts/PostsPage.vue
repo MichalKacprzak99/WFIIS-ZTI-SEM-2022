@@ -8,25 +8,25 @@
 <template>
   <div class="usersContainer">
 
-    <template v-for="user in users.items">
-      <UserCard :email="user.email" :first-name="user.firstName" :last-name="user.lastName"/>
+    <template v-for="post in posts.items">
+      <UserCard :post="post"/>
 
     </template>
   </div>
 </template>
 
 <script>
-import UserCard from './components/UserCard'
+import UserCard from './components/Post'
 
 export default {
   components: {UserCard},
   computed: {
-    users() {
-      return this.$store.state.users.all;
+    posts() {
+      return this.$store.state.posts.all;
     }
   },
   created() {
-    this.$store.dispatch('users/getAll');
+    this.$store.dispatch('posts/getAll');
   }
 };
 </script>
