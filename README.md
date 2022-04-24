@@ -23,12 +23,13 @@ Do uruchomienia przykładu należy posiadać zainstalowane:
 
 ### Uruchomienie Krok po kroku
 
-1. Pobrać lub sklonować kod źródłowy projektu z https://github.com/MichalKacprzak99/WFIIS-ZTI-SEM-2022.
-2. Wejść do folderu projektu - `cd WFIIS-ZTI-SEM-2022/`.
-3. Wejść do folderu z przykładem z frameworka React.js - `cd react_client/`.
-4. Zainstalować wszystkie wymagane pakiety npm, uruchamiając `npm install` z wiersza poleceń w folderze `WFIIS-ZTI-SEM-2022/react_client/`.
-5. Uruchomić aplikację, za pomocą komendy `npm start` z wiersza poleceń w folderze `WFIIS-ZTI-SEM-2022/react_client/`.
-6. Strona z aplikacją powinna się automatycznie otworzyć w przeglądarce. Jeśli się tak niestanie jest ona dostępna pod adresem http://localhost:3000/.
+1. Uruchomić server na podstawie instrukcji z https://github.com/Darkosz1012/jwt-postgress-spring
+2. Pobrać lub sklonować kod źródłowy projektu z https://github.com/MichalKacprzak99/WFIIS-ZTI-SEM-2022.
+3. Wejść do folderu projektu - `cd WFIIS-ZTI-SEM-2022/`.
+4. Wejść do folderu z przykładem z frameworka React.js - `cd react_client/`.
+5. Zainstalować wszystkie wymagane pakiety npm, uruchamiając `npm install` z wiersza poleceń w folderze `WFIIS-ZTI-SEM-2022/react_client/`.
+6. Uruchomić aplikację, za pomocą komendy `npm start` z wiersza poleceń w folderze `WFIIS-ZTI-SEM-2022/react_client/`.
+7. Strona z aplikacją powinna się automatycznie otworzyć w przeglądarce. Jeśli się tak niestanie jest ona dostępna pod adresem http://localhost:3000/.
 
 ## Instrukcja - Vue.js
 
@@ -39,10 +40,10 @@ Do uruchomienia przykładu należy posiadać zainstalowane:
 * npm - v6.14.9
 
 ### Uruchomienie Krok po kroku
-
-1. Pobrać lub sklonować kod źródłowy projektu z https://github.com/MichalKacprzak99/WFIIS-ZTI-SEM-2022.
-2. Wejść do folderu projektu - `cd WFIIS-ZTI-SEM-2022/`.
-3. Wejść do folderu z przykładem z frameworka Vue.js - `cd vue_client/`.
-4. Zainstalować wszystkie wymagane pakiety npm, uruchamiając `npm install` z wiersza poleceń w folderze `WFIIS-ZTI-SEM-2022/vue_client/`.
-5. Uruchomić aplikację, za pomocą komendy `npm start` z wiersza poleceń w folderze `WFIIS-ZTI-SEM-2022/vue_client/`.
-6. Strona z aplikacją powinna się automatycznie otworzyć w przeglądarce. Jeśli się tak niestanie jest ona dostępna pod adresem http://localhost:8081/.
+1. Uruchomić server na podstawie instrukcji z https://github.com/Darkosz1012/jwt-postgress-spring
+2. Pobrać lub sklonować kod źródłowy projektu z https://github.com/MichalKacprzak99/WFIIS-ZTI-SEM-2022.
+3. Wejść do folderu projektu - `cd WFIIS-ZTI-SEM-2022/`.
+4. Wejść do folderu z przykładem z frameworka Vue.js - `cd vue_client/`.
+5. Zainstalować wszystkie wymagane pakiety npm, uruchamiając `npm install` z wiersza poleceń w folderze `WFIIS-ZTI-SEM-2022/vue_client/`.
+6. Uruchomić aplikację, za pomocą komendy `npm start` z wiersza poleceń w folderze `WFIIS-ZTI-SEM-2022/vue_client/`.
+7. Strona z aplikacją powinna się automatycznie otworzyć w przeglądarce. Jeśli się tak niestanie jest ona dostępna pod adresem http://localhost:3001/.
