@@ -11,7 +11,7 @@ import {Link} from "react-router-dom";
 const NavBar = () => {
     const appBarLinks = [
         {to: "", name: 'Home'},
-        {to: "users", name: 'Users'},
+        {to: "posts", name: 'Posts'},
     ]
     return (
         <Box sx={{flex: 1}}>

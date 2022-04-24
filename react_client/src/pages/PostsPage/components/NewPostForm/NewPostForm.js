@@ -1,36 +1,29 @@
 import React from 'react';
-import {useNavigate} from 'react-router-dom';
 import {useForm, Controller, FormProvider} from "react-hook-form";
-import axios from "../../axios.config";
 import {
     Button,
     Container,
-    CssBaseline,
+    CssBaseline, Grid,
     TextField
 } from "@mui/material";
+import {useAuthHeader} from 'react-auth-kit'
 
 import Typography from "@mui/material/Typography";
-import {useSignIn} from "react-auth-kit";
+import axios from "../../../../axios.config";
 
-
-const LoginPage = () => {
+const NewPostForm = ({setPosts}) => {
+    const authHeader = useAuthHeader()
     const {handleSubmit, control} = useForm();
-    const signIn = useSignIn()
-    const navigate = useNavigate();
 
-    const handleLogin = (loginData) => {
-        axios.post('auth/signin/', loginData).then(res => {
+    const handleAddPost = (newPost) => {
+
+        axios.post('post/add/', newPost, {
+            headers: {
+                'Authorization': authHeader()
+            }
+        }).then(res => {
             if (res.status === 200) {
-                if (signIn({
-                    token: res.data.accessToken,
-                    expiresIn: 999,
-                    tokenType: res.data.tokenType,
-                    // authState: res.data.authUserState,
-                })) {
-                    // Redirect or do-something
-                    navigate("/")
-                }
-
+                setPosts(posts => [...posts, res.data]);
             }
         }).catch((error) => {
             if (error.response) {
@@ -52,44 +45,28 @@ const LoginPage = () => {
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline/>
-            <div>
+            <Grid>
                 <p id="error"></p>
 
                 <Typography component="h1" variant="h5">
-                    Sign in
+                    Add Post
                 </Typography>
                 <FormProvider {...handleSubmit}>
-                    <form onSubmit={handleSubmit(handleLogin)}>
+                    <form onSubmit={handleSubmit(handleAddPost)}>
                         <Controller
                             render={({field}) => (
                                 <TextField {...field}
                                            fullWidth
-                                           label="Username"
+                                           label="content"
                                            required
                                            onChange={(e) => field.onChange(e)}
                                            value={field.value}
                                 />
                             )}
-                            name="username"
+                            name="content"
                             control={control}
                             defaultValue=""
-                            label="Username"
-                        />
-
-                        <Controller
-                            render={({field}) => (
-                                <TextField {...field}
-                                           fullWidth
-                                           label="Password"
-                                           type="password"
-                                           required
-                                           onChange={(e) => field.onChange(e)}
-                                           value={field.value}
-                                />
-                            )}
-                            name="password"
-                            control={control}
-                            defaultValue=""
+                            label="Content"
                         />
                         <Button
                             type="submit"
@@ -97,14 +74,14 @@ const LoginPage = () => {
                             variant="contained"
                             color="primary"
                         >
-                            Sign In
+                            Add Post
                         </Button>
 
                     </form>
                 </FormProvider>
-            </div>
+            </Grid>
         </Container>
     );
 };
 
-export default LoginPage;
+export default NewPostForm;

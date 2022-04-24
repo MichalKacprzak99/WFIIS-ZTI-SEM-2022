@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {AuthProvider, RequireAuth} from "react-auth-kit";
-import {LoginPage, UsersPage, Home} from "./pages";
+import {LoginPage, PostsPage, Home} from "./pages";
 import {StyledEngineProvider} from '@mui/material/styles';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -21,9 +21,9 @@ root.render(
                         <Route path="/" element={<App/>}>
                             <Route index element={<Home/>}/>
                             <Route path="login" element={<LoginPage/>}/>
-                            <Route path='users' element={
+                            <Route path='posts' element={
                                 <RequireAuth loginPath={'/login'}>
-                                    <UsersPage/>
+                                    <PostsPage/>
                                 </RequireAuth>
                             }/>
                         </Route>

@@ -5,9 +5,9 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
 
-const UserCard = ({user}) => {
+const PostCard = ({post}) => {
 
-    const {firstName, lastName, email} = user
+    const {user, content} = post
 
     return (
         < Card>
@@ -20,13 +20,10 @@ const UserCard = ({user}) => {
                 >
                     <Grid item>
                         < Typography>
-                            First Name: {firstName}
+                            User: {user.username}
                         </Typography>
                         <Typography>
-                            Last Name {lastName}
-                        </Typography>
-                        <Typography>
-                            Email: {email}
+                            Content: {content}
                         </Typography>
                     </Grid>
                 </Grid>
@@ -35,4 +32,4 @@ const UserCard = ({user}) => {
     );
 };
 
-export default UserCard;
+export default PostCard;

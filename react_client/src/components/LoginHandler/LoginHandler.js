@@ -5,12 +5,11 @@ import {Link} from "react-router-dom";
 
 const LoginHandler = () => {
     const isAuthenticated = useIsAuthenticated()
-
     const signOut = useSignOut()
 
     return (
         <>
-            {!isAuthenticated() ? (
+            {isAuthenticated() ? (
 
                 <Link to="/" style={{textDecoration: 'none'}} onClick={() => signOut()}>
 
