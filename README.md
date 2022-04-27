@@ -1,6 +1,6 @@
 # WFiIS-ZTI-SEM-2022
 
-## Table of Contents
+## Spis treści
 
 * [Przegląd](#przegld)
 * [Instrukcja - React.js](#instrukcja---reactjs)
